@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block titulo %}LOGIN{% endblock %}
+{% include 'includes/navbar.html'}
+{% block contenido %}
+  <h1>INICIO DE SESIÓN</h1>
+  <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <input type="email" name="correo" placeholder="Correo Electrónico" required>
+    <input type="password" name="clave" placeholder="Contraseña" required>
+    <input type="submit" value="Iniciar Sesión">
+  </form>
+  {% if mensaje %}
+    <h5>{{ mensaje }}</h5>
+  {% endif %}
+ 
+{% endblock %}
+{% include 'includes/footer.html' %}

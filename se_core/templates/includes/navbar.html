@@ -1,0 +1,31 @@
+<nav>
+  <ul>
+    <li>
+      <a href="{% url 'index' %}">INICIO</a>
+    </li>
+    <li>
+      <a href="{% url 'acercade' %}">ACERCA DE</a>
+    </li>
+    <li>
+      <a href="{% url 'misionyvision' %}">MISIÓN Y VISIÓN</a>
+    </li>
+    <li>
+      <a href="{% url 'contactanos' %}">CONTÁCTANOS</a>
+    </li>
+    {% if user.is_authenticated %}
+      <li>
+        <a href="#">
+          <span>{{ user.get_short_name }}: CERRAR SESIÓN</span>
+        </a> 
+      </li>
+    {% else %}
+      <li>
+        <a href="{% url 'iniciosesion' %}">INICIAR SESIÓN</a>
+      </li>
+      <li>
+        <a href="#">REGISTRARME</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+<hr>

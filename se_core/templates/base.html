@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    {% include 'includes/navbar.html' %}
+  </nav>
+  <!-- ASIDE (menú lateral izquierdo para la sesión de administrador) -->
+  {% if user.is_authenticated %}
+    <aside class="layout-aside">
+      {% block aside %}
+        {% if user.rol.nombre == 'Coordinador Académico' %}
+          {% include 'includes/aside_coordinador.html' %}
+        {% elif user.rol.nombre == 'Docente' %}
+          {% include 'includes/aside_docente.html' %}
+        {% endif %}
+      {% endblock %}
+    </aside>
+  {% endif %}
+
+  <!-- CONTENIDO CENTRAL -->
+  <main class="layout-content">
+    {% block contenido %}{% endblock %}
+  </main>
+  
+  <!-- PIE DE PÁGINA -->
+  {% include 'includes/footer.html' %}
+
+  <!-- ESTILOS Y JAVASCRIPT -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+  {% block extra_css_js %}{% endblock %}
+</body>
+</html>
