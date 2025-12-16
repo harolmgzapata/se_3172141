@@ -1,0 +1,270 @@
+-- Script de Inserciones en las tablas 
+-- de la base de datos 'sistema_escolar'
+
+-- ***************** NIVELES EDUCATIVOS ****************
+INSERT INTO se_core_niveles_educativos (nombre) VALUES
+    ('Primero'), ('Segundo'), ('Tercero'),
+    ('Cuarto'), ('Quinto');
+
+-- NOTA: se deben insertar los siguientes registros 
+-- por medio del aplicativo 
+-- Sexto, Séptimo, Octavo, Noveno,
+-- Décimo y Once 
+
+-- ****************************************************
+
+-- ***************** GRADOS ESCOLARES *****************
+INSERT INTO se_core_grados (nombre, nivel_id) VALUES
+    ('Primero', 1), ('Segundo', 2), ('Tercero', 3), 
+    ('Cuarto', 4), ('Quinto', 5);
+
+-- NOTA: se deben insertar por medio del aplicativo
+--       los siguientes registros
+-- 'Sexto', 6; 'Séptimo', 7; 'Octavo', 8; 'Noveno', 9;
+-- 'Décimo', 10 y 'Once', 11
+-- ****************************************************
+
+-- ************************* ÁREAS ACADÉMICAS *************************
+INSERT INTO se_core_areas (nombre, obligatoria) VALUES
+    ('Matemáticas', true), 
+    ('Humanidades, Lengua Castellana e Idiomas Extranjeros', true), 
+    ('Ciencias Naturales y Educación Ambiental', true), 
+    ('Ciencias Sociales, Historia, Geografía, Constitución Política y Democracia', true), 
+    ('Tecnología e Informática', true), 
+    ('Educación Artística', true), 
+    ('Educación Física, Recreación y Deportes', true), 
+    ('Lengua Extranjera', false);
+
+-- NOTA: se deben insertar por medio del aplicativo
+--       los siguientes registros
+-- Educación Ética y en Valores Humanos, true
+-- Proyecto de Educación Sexual, false
+-- Proyecto Ambiental Escolar (PRAE), false
+-- Proyecto Democracia y Convivencia, false
+-- Proyecto Emprendimiento, false
+-- Educación Religiosa, false
+-- Educación Artística y Cultural, true
+-- Ciencias Económicas, Políticas y la Filosofía, true
+-- ********************************************************************
+
+-- **************** ASIGNATURAS ACADÉMICAS *****************
+INSERT INTO se_core_asignaturas (nombre, area_id, grado_id) VALUES
+    ('Ciencias Naturales', 3, 1), 
+    ('Aritmética', 1, 1), 
+    ('Geometría', 1, 1), 
+    ('Sociales', 4, 1), 
+    ('Geografía', 4, 1), 
+    ('Historia', 4, 1), 
+    ('Lengua Castellana', 2, 1),
+    ('Inglés', 2, 1),
+    ('Informática', 5, 1),
+    ('Educación Física', 7, 1);
+
+-- NOTA: se deben insertar por medio del aplicativo
+--       los siguientes registros
+-- Ética y Valores, 9, 1
+-- Religión, 14, 1
+-- Música, 15, 1
+-- Artes Plásticas, 15, 1
+-- *********************************************************
+
+-- ************************* AULAS *************************
+INSERT INTO se_core_aulas (nombre, capacidad, estado) VALUES
+    ('Salón Primero A', 20, 'Disponible'), 
+    ('Salón Segundo A', 20, 'Disponible'), 
+    ('Salón Tercero A', 20, 'Disponible'), 
+    ('Salón Cuarto A', 20, 'Disponible'), 
+    ('Salón Quinto A', 20, 'Disponible');
+
+-- NOTA: se deben insertar los siguientes registros
+--       por medio del aplicativo     
+-- Salón Sexto A, 20, Disponible 
+-- Salón Séptimo A, 20, Disponible
+-- Salón Octavo A, 20, Disponible
+-- Salón Noveno A, 20, Disponible
+-- Salón Décimo A, 20, Disponible
+-- Salón Undécimo A, 20, Disponible
+-- *********************************************************
+
+-- ******************* GRUPOS ACADÉMICOS *******************
+INSERT INTO se_core_grupos (nombre, aula_id, grado_id) VALUES
+    ('Primero A', 1, 1), ('Segundo A', 2, 2), 
+    ('Tercero A', 3, 3), ('Cuarto A', 4, 4), 
+    ('Quinto A', 5, 5);
+
+-- NOTA: se deben insertar los siguientes registros
+--       por medio del aplicativo
+-- Sexto A, 6, 6
+-- Séptimo A, 7, 7
+-- Octavo A, 8, 8
+-- Noveno A, 9, 9
+-- Décimo A, 10, 10
+-- Undécimo A, 11, 11
+-- *********************************************************
+
+-- ****************** ROLES DE USUARIO *********************
+INSERT INTO se_core_roles (nombre) VALUES
+    ('Coordinador Académico'), ('Docente'), 
+    ('Estudiante'), ('Padre de Familia o Acudiente');
+-- *********************************************************
+
+-- *********************** PAISES **************************
+INSERT INTO se_core_paises (nombre, codigo_iso) VALUES
+    ('Colombia', 'COL'),
+    ('Argentina', 'ARG'),
+    ('Bahamas', 'BAH'),
+    ('Barbados', 'BLB'),
+    ('Bélice', 'BLZ'),
+    ('Bolivia', 'BOL'),
+    ('Brasil', 'BRA'),
+    ('Canadá', 'CAN'),
+    ('Chile', 'CHL'),
+    ('Costa Rica', 'CRC'),
+    ('Cuba', 'CUB'),
+    ('Dominica', 'DMA'),
+    ('Ecuador', 'ECU'),
+    ('El Salvador', 'SLV'),
+    ('Estados Unidos', 'USA'),
+    ('GRANADA', 'GRD'),
+    ('GUATEMALA', 'GTM'),
+    ('Guyana', 'GYN'),
+    ('Haití', 'HTI'),
+    ('Honduras', 'HND'),
+    ('Jamaica', 'JAM'),
+    ('México', 'MEX'),
+    ('Nicaragua', 'NIC'),
+    ('Panamá', 'PAN'),
+    ('Paraguay', 'PRY'),
+    ('Perú', 'PER'),
+    ('República Dominicana', 'DOM'),
+    ('San Cristobal y Nieves', 'KNA'),
+    ('San Vicente y las Granadinas', 'VCT'),
+    ('Santa Lucía', 'LCA'),
+    ('Surinam', 'SUR'),
+    ('Trinidad y Tobago', 'TTO'),
+    ('Uruguay', 'URY'),
+    ('Venezuela', 'VEN');
+-- *********************************************************
+
+-- ******************** DEPARTAMENTOS **********************
+INSERT INTO se_core_departamentos (nombre, pais_id) VALUES
+    ('Antioquia', 1),
+    ('Amazonas', 1),
+    ('Arauca', 1),
+    ('Atlántico', 1),
+    ('Bogotá D.C.', 1),
+    ('Bolivar', 1),
+    ('Boyacá', 1),
+    ('Caldas', 1),
+    ('Caquetá', 1),
+    ('Casanare', 1),
+    ('Cauca', 1),
+    ('Cesar', 1),
+    ('Chocó', 1),
+    ('Córdoba', 1),
+    ('Cundinamarca', 1),
+    ('Guainía', 1),
+    ('Guaviare', 1),
+    ('Huila', 1),
+    ('La Guajira', 1),
+    ('Magdalena', 1),
+    ('Meta', 1),
+    ('Nariño', 1),
+    ('Norte de Santander', 1),
+    ('Putumayo', 1),
+    ('Quindio', 1),
+    ('Risaralda', 1),
+    ('San Andrés, Providencia y Santa Catalina', 1),
+    ('Santander', 1),
+    ('Sucre', 1),
+    ('Tolima', 1),
+    ('Valle del Cauca', 1),
+    ('Vaupés', 1),
+    ('Vichada', 1);
+-- *********************************************************
+
+-- ********************** CIUDADES *************************
+INSERT INTO se_core_ciudades (nombre, departamento_id) VALUES
+    ('Abejorral', 1),
+    ('Abriaquí', 1),
+    ('Alejandría', 1),
+    ('Amagá', 1),
+    ('Amalfi', 1),
+    ('Andes', 1),
+    ('Angelopolis', 1),
+    ('Angostura', 1),
+    ('Anorí', 1),
+    ('Arboletes', 1),
+    ('Argelia', 1),
+    ('Armenia', 1),
+    ('Barbosa', 1),
+    ('Bello', 1),
+    ('Belmira', 1),
+    ('Caldas', 1),
+    ('Copacabana', 1),
+    ('Envigado', 1),
+    ('Girardota', 1),
+    ('Itagüí', 1),
+    ('La Estrella', 1),
+    ('Medellín', 1),
+    ('Sabaneta', 1),
+    ('Santa Fe de Antioquia', 1);
+-- *********************************************************
+
+-- ********************** GÉNEROS **************************
+INSERT INTO se_core_generos (nombre) VALUES
+    ('Masculino'), ('Femenino');
+-- *********************************************************
+
+-- ******************** ESTADO CIVIL ***********************
+INSERT INTO se_core_estados_civiles (nombre) VALUES
+    ('Soltero'),
+    ('Casado'),
+    ('Viudo'),
+    ('Unión Libre'),
+    ('Divorciado o Separado'),
+    ('Indiferente');
+-- *********************************************************
+
+-- ********************** ESTRATOS *************************
+INSERT INTO se_core_estratos (nombre) VALUES
+    ('Uno'), ('Dos'), ('Tres'), 
+    ('Cuatro'), ('Cinco'), ('Seis'), 
+    ('No Estratificado'); 
+-- *********************************************************
+
+-- ***************** TIPOS DE DOCUMENTO ********************
+INSERT INTO se_core_tipos_documento (nombre) VALUES
+    ('Registro Civil de Nacimiento'),
+    ('Tarjeta de Identidad'),
+    ('Cédula de Ciudadanía'),
+    ('Cédula de Extranjería'),
+    ('Pasaporte'),
+    ('Contraseña de Trámite'),
+    ('Permiso Especial de Permanencia - PEP'),
+    ('Permiso de Protección Temporal - PPT'),
+    ('Documento de Padres o Responsables Legales');
+-- *********************************************************
+
+-- ****************** ACTUALIZACIÓN DEL SUPERUSUARIO ********************
+UPDATE se_core_usuarios SET activado_por_id = 1, rol_id = 1 WHERE id = 1;
+-- **********************************************************************
+
+-- SELECT * FROM se_core_niveles_educativos;
+-- SELECT * FROM se_core_grados;
+-- SELECT * FROM se_core_areas;
+-- SELECT * FROM se_core_asignaturas;
+-- SELECT * FROM se_core_aulas;
+-- SELECT * FROM se_core_grupos;
+-- SELECT * FROM se_core_roles;
+-- SELECT * FROM se_core_paises;
+-- SELECT * FROM se_core_departamentos;
+-- SELECT * FROM se_core_ciudades;
+-- SELECT * FROM se_core_generos;
+-- SELECT * FROM se_core_estados_civiles;
+-- SELECT * FROM se_core_estratos;
+-- SELECT * FROM se_core_tipos_documento;
+-- SELECT * FROM se_core_usuarios;
+
+-- SELECT u.id AS id, u.last_login AS "ultimo ingreso", u.is_superuser AS superusuario, u.correo AS correo, u.fecha_creacion AS "creado el", u.is_active AS activo,
+--	 r.nombre AS rol FROM se_core_usuarios AS u, se_core_roles AS r WHERE u.rol_id = r.id;
