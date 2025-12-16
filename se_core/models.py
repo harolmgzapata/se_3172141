@@ -1,7 +1,10 @@
 from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group, Permission, User
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, Group, Permission, User
+from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+
+from .managers import UsuarioManager
 
 
 # Create your models here.
@@ -193,36 +196,21 @@ class Temas(models.Model):
     
 # -------------------------------------------------------------------
 # ---------------------- Usuario Personalizado ----------------------
-class UsuarioManager(BaseUserManager):
-    def create_user(self, correo, password=None, **extra_fields):
-        if not correo:
-            raise ValueError('El correo electrónico es obligatorio')
-        correo = self.normalize_email(correo)
-        user = self.model(correo=correo, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
 
-    def create_superuser(self, correo, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        return self.create_user(correo, password, **extra_fields)
-    
-
-class Usuario(AbstractBaseUser, PermissionsMixin):
-    correo = models.EmailField(unique=True)
+class Usuarios(AbstractBaseUser, PermissionsMixin):
+    correo = models.EmailField(_('Dirección de Correo'), unique = True)
     rol = models.ForeignKey(Roles, on_delete=models.PROTECT, null=True, blank=True)
 
-    tipo_documento = models.ForeignKey(Tipos_Documento, on_delete=models.PROTECT, null=True)
-    numero_documento = models.CharField(max_length=20, unique=True, null=True)
+    # tipo_documento = models.ForeignKey(Tipos_Documento, on_delete=models.PROTECT, null=True)
+    # numero_documento = models.CharField(max_length=20, unique=True, null=True)
 
-    municipio_identificacion = models.ForeignKey(
-        Ciudades,
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='usuarios_por_municipio_ident'
-    )
+    # municipio_identificacion = models.ForeignKey(
+    #     Ciudades,
+    #     null=True,
+    #     blank=True,
+    #     on_delete=models.SET_NULL,
+    #     related_name='usuarios_por_municipio_ident'
+    # )
 
     activado_por = models.ForeignKey(
         settings.AUTH_USER_MODEL,
