@@ -266,5 +266,5 @@ UPDATE se_core_usuarios SET activado_por_id = 1, rol_id = 1 WHERE id = 1;
 -- SELECT * FROM se_core_tipos_documento;
 -- SELECT * FROM se_core_usuarios;
 
--- SELECT u.id AS id, u.last_login AS "ultimo ingreso", u.is_superuser AS superusuario, u.correo AS correo, u.fecha_creacion AS "creado el", u.is_active AS activo,
+--SELECT u.id AS id, u.last_login AS "ultimo ingreso", u.is_superuser AS superusuario, u.correo AS correo, u.fecha_creacion AS "creado el", u.is_active AS activo,
 --	 r.nombre AS rol FROM se_core_usuarios AS u, se_core_roles AS r WHERE u.rol_id = r.id;
